@@ -62,11 +62,11 @@ const MazeCanvas = ({ maze, onWin, onLoss }) => {
         const { cellSize, offsetX, offsetY } = metrics;
         if (cellSize === 0) return;
 
-        // Get Computed theme styles gracefully
-        const style = getComputedStyle(document.body);
-        const wallColor = style.getPropertyValue('--wall-color').trim() || '#333';
-        const pathColor = style.getPropertyValue('--path-color').trim() || '#0f0';
-        const bg = style.getPropertyValue('--bg-color').trim() || '#000';
+        // Hardcode colors based on theme to guarantee instant synchronous canvas updates
+        const isLight = theme === 'light';
+        const bg = isLight ? '#f0f0f5' : '#0d0d12';
+        const wallColor = isLight ? '#ddddf0' : '#222233';
+        const pathColor = isLight ? '#0055ff' : '#00ffcc';
 
         ctx.fillStyle = bg;
         ctx.fillRect(0, 0, canvas.width, canvas.height);
