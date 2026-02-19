@@ -81,6 +81,16 @@ button:hover {
     width: 100%;
     box-sizing: border-box;
     height: 50px;
-    /* fixed height for the header */
     z-index: 100;
+}
+
+.menu-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    text-align: center;
+    z-index: 10;
 }

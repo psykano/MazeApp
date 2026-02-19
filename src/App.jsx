@@ -30,12 +30,14 @@ function MazeApp() {
 
     return (
         <div className="app-container">
-            <header style={{ display: 'flex', justifyContent: 'flex-end', padding: '1rem', width: '100vw', position: 'absolute', top: 0, boxSizing: 'border-box' }}>
+            <header className="app-header">
                 <button onClick={toggleTheme}>Toggle Theme</button>
             </header>
 
             {gameState === 'config' && (
-                <ConfigMenu onStart={startGame} />
+                <div className="menu-container">
+                    <ConfigMenu onStart={startGame} />
+                </div>
             )}
 
             {gameState === 'playing' && maze && (
@@ -46,14 +48,14 @@ function MazeApp() {
             )}
 
             {gameState === 'win' && (
-                <div style={{ zIndex: 10, textAlign: 'center' }}>
+                <div className="menu-container">
                     <h2>You Win!</h2>
                     <button onClick={() => setGameState('config')}>Play Again</button>
                 </div>
             )}
 
             {gameState === 'loss' && (
-                <div style={{ zIndex: 10, textAlign: 'center' }}>
+                <div className="menu-container">
                     <h2>Game Over</h2>
                     <p>{lossReason}</p>
                     <button onClick={() => setGameState('config')}>Try Again</button>
