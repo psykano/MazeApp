@@ -29,7 +29,8 @@
 body {
     margin: 0;
     display: flex;
-    place-items: center;
+    justify-content: center;
+    align-items: center;
     min-width: 320px;
     min-height: 100vh;
     background-color: var(--bg-color);
@@ -53,4 +54,19 @@ button {
 button:hover {
     background-color: var(--btn-hover);
     box-shadow: var(--accent-glow);
+}
+
+#root {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.app-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    min-height: 100vh;
 }
