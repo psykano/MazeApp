@@ -1,0 +1,70 @@
+.config-menu {
+    background: var(--panel-bg);
+    padding: 2rem;
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+    max-width: 400px;
+    width: 100%;
+}
+
+.config-menu h2 {
+    margin-top: 0;
+    text-align: center;
+    color: var(--path-color);
+    text-shadow: var(--accent-glow);
+}
+
+.difficulty-presets {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1.5rem;
+}
+
+.preset-btn {
+    flex: 1;
+    margin: 0 0.25rem;
+}
+
+.preset-btn.active {
+    background-color: var(--path-color);
+    color: #fff;
+    border-color: var(--path-color);
+    box-shadow: var(--accent-glow);
+}
+
+.config-summary {
+    background: rgba(0, 0, 0, 0.2);
+    padding: 1rem;
+    border-radius: 4px;
+    margin-bottom: 1.5rem;
+}
+
+.config-summary p {
+    margin: 0.25rem 0;
+}
+
+.time-limit {
+    font-weight: bold;
+    color: var(--danger-color);
+}
+
+.custom-sliders label {
+    display: block;
+    margin-bottom: 1rem;
+}
+
+.custom-sliders input[type=range] {
+    width: 100%;
+    margin-top: 0.5rem;
+}
+
+.start-btn {
+    width: 100%;
+    padding: 0.75rem;
+    font-size: 1.1rem;
+    background-color: var(--path-color);
+    color: #fff;
+    border: none;
+    font-weight: bold;
+}

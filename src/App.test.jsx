@@ -1,11 +1,16 @@
-import { render, screen } from '@testing-library/react';
+import { render, screen, fireEvent } from '@testing-library/react';
 import App from './App';
 import React from 'react';
 
 describe('App', () => {
-    it('renders headline', () => {
+    it('renders the configuration menu initially', () => {
         render(<App />);
-        const headline = screen.getByText(/2D Maze Application/i);
-        expect(headline).toBeInTheDocument();
+        expect(screen.getByText(/Maze Configuration/i)).toBeInTheDocument();
+    });
+
+    it('transitions to playing state when start is clicked', () => {
+        render(<App />);
+        fireEvent.click(screen.getByText('Start Game'));
+        expect(screen.getByTestId('maze-canvas')).toBeInTheDocument();
     });
 });

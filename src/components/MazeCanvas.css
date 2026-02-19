@@ -1,0 +1,17 @@
+.canvas-container {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    background-color: var(--bg-color);
+    touch-action: none;
+    /* Crucial: Prevents mobile pull-to-refresh while drawing */
+}
+
+canvas {
+    cursor: crosshair;
+    /* Glowing border effect */
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5), inset var(--accent-glow);
+}
