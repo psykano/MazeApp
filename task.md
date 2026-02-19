@@ -4,16 +4,17 @@
 - [x] Create README.md file
 
 ## Phase 1: Foundation & Setup
-- [ ] Scaffold React Application
+- [x] Scaffold React Application
   - Initialize Vite React project
-  - Clean up boilerplate code
-  - Install base dependencies (e.g., CSS preprocessor if needed, or stick to Vanilla CSS)
-- [ ] Configure Docker environment
+  - Install base dependencies
+  - Install and configure Vitest and React Testing Library for TDD
+  - Create the root test setup files
+- [x] Configure Docker environment
   - Create `Dockerfile` for React SPA
   - Create `docker-compose.yml`
 
 ## Phase 2: Core Infrastructure
-- [ ] Setup Theme & CSS Architecture
+- [/] Setup Theme & CSS Architecture
   - Implement Vanilla CSS framework structure
   - Create CSS variables for Cyberpunk Theme (Dark/Light mode)
   - Implement theme toggle logic in React
