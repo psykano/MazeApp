@@ -1,0 +1,45 @@
+# Product Requirements Document (PRD): 2D Maze Web Application
+
+## 1. Product Overview
+The goal is to develop an interactive and highly configurable web application that generates 2D mazes. Users can customize the maze generation parameters (e.g., size, number of dead-ends) and attempt to solve the maze within a set time limit by drawing a continuous path from the start point to the end point.
+
+## 2. Target Audience
+- Puzzle enthusiasts and casual gamers looking for a quick, customizable challenge.
+- Educators or parents who want engaging, scalable cognitive exercises for students/children.
+
+## 3. Core Features & Requirements
+
+### 3.1. Maze Configuration Options
+Before starting a game, the user should be presented with a configuration UI to customize the upcoming maze:
+- **Size/Grid Dimensions:** Configure the width and height of the maze grids (e.g., Small: 10x10, Medium: 20x20, Large: 40x40, or Custom).
+- **Complexity / Dead-Ends:** Options to control the density of dead-ends and branching factor (e.g., Low, Medium, High).
+- **Time Limit:** Provide presets or custom inputs for the countdown timer. Optionally, auto-calculate a fair time limit based on the chosen dimensions and complexity.
+
+### 3.2. Maze Generation Engine
+- Implement a robust underlying maze generation algorithm (such as Recursive Backtracker, Hunt-and-Kill, or Prim's algorithm).
+- Ensure that the maze always has at least one valid path connecting the Start point (e.g., top-left) and the End point (e.g., bottom-right).
+
+### 3.3. Gameplay & Interaction
+- **Canvas Rendering:** Render the maze efficiently, most likely using HTML5 `<canvas>` or SVG.
+- **Drawing Interface:** Allow users to draw paths by clicking/touching the Start node and dragging through the maze to the End node.
+- **Wall Collision/Validation:** Prevent the user's drawing line from crossing through the maze walls (clipping). Alternatively, track collisions and fail the user if they cross the lines.
+- **Countdown Timer:** A prominent visual timer that ticks down as the user attempts the puzzle.
+
+### 3.4. Game States (Win/Loss)
+- **Win:** The user drawing reaches the End point without crossing any walls before the time expires.
+- **Loss:** The timer runs out before the user reaches the target.
+- **Post-Game Screen:** Display stats (time remaining, time taken) and offer options to "Play Again" or "Change Settings".
+
+## 4. Technical Stack
+- **Core Languages:** HTML5, CSS3, JavaScript (ES6+).
+- **Rendering:** HTML5 `<canvas>` API provides excellent performance for drawing pixel lines and detecting wall boundaries.
+- **Framework Options:** Can be built as a Single Page Application (SPA) using vanilla JavaScript or a modern framework like React or Vite, tailored to the required application scope. 
+
+## 5. UI/UX Considerations
+- **Responsive Layout:** The interface and the maze canvas must dynamically scale to remain playable on both desktop monitors and mobile touch screens.
+- **Premium Aesthetics:** Utilize modern web design practices. Consider a dark mode theme with glowing or neon accents for the drawn path to make the gameplay visually striking. 
+
+## 6. Future Enhancements (Post-MVP)
+- **Fog of War:** Only reveal a limited radius around the player's current drawing location.
+- **Leaderboards:** Save the best completion times using LocalStorage or a backend database.
+- **Power-ups:** Pick up time-extensions or hints (showing the correct path for 1 second) scattered in the maze.
