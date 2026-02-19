@@ -1,7 +1,9 @@
 import React, { useRef, useEffect, useState } from 'react';
+import { useTheme } from './ThemeProvider';
 import './MazeCanvas.css';
 
 const MazeCanvas = ({ maze, onWin, onLoss }) => {
+    const { theme } = useTheme();
     const canvasRef = useRef(null);
     const containerRef = useRef(null);
     const [isDrawing, setIsDrawing] = useState(false);
@@ -122,7 +124,7 @@ const MazeCanvas = ({ maze, onWin, onLoss }) => {
             // Reset shadow for other draws
             ctx.shadowBlur = 0;
         }
-    }, [grid, metrics, path, start, end]);
+    }, [grid, metrics, path, start, end, theme]);
 
     // Input Handling
     const getMouseCoords = (e) => {

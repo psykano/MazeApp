@@ -49,9 +49,6 @@ const TimerBar = ({ timeLimit, onTimeOut }) => {
                 className={`timer-fill ${isCritical ? 'critical' : ''}`}
                 style={{ width: `${progressPercent}%` }}
             ></div>
-            <div className="timer-text">
-                {timeLeft}s
-            </div>
         </div>
     );
 };

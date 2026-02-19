@@ -2,11 +2,16 @@ import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
 import MazeCanvas from './MazeCanvas';
 import { generateMaze } from '../utils/mazeEngine';
+import { ThemeProvider } from './ThemeProvider';
 
 describe('MazeCanvas', () => {
     it('renders a canvas element', () => {
         const maze = generateMaze(10, 10);
-        render(<MazeCanvas maze={maze} onWin={() => { }} onLoss={() => { }} />);
+        render(
+            <ThemeProvider>
+                <MazeCanvas maze={maze} onWin={() => { }} onLoss={() => { }} />
+            </ThemeProvider>
+        );
 
         // Check if canvas exists
         const canvas = screen.getByTestId('maze-canvas');
@@ -16,7 +21,11 @@ describe('MazeCanvas', () => {
 
     it('handles mousedown events to start drawing', () => {
         const maze = generateMaze(10, 10);
-        render(<MazeCanvas maze={maze} onWin={() => { }} onLoss={() => { }} />);
+        render(
+            <ThemeProvider>
+                <MazeCanvas maze={maze} onWin={() => { }} onLoss={() => { }} />
+            </ThemeProvider>
+        );
         const canvas = screen.getByTestId('maze-canvas');
 
         // Simulate clicking slightly off (0,0) to start
