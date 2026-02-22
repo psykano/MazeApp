@@ -26,6 +26,25 @@ describe('ConfigMenu', () => {
         expect(screen.getByLabelText(/Dead-ends density/)).toBeInTheDocument();
     });
 
+    it('limits dead-end density slider to 10%-90% in 10% steps', () => {
+        render(<ConfigMenu onStart={() => { }} />);
+        fireEvent.click(screen.getByText('Custom'));
+
+        const densitySlider = screen.getByLabelText(/Dead-ends density/);
+        expect(densitySlider).toHaveAttribute('min', '0.1');
+        expect(densitySlider).toHaveAttribute('max', '0.9');
+        expect(densitySlider).toHaveAttribute('step', '0.1');
+
+        fireEvent.change(densitySlider, { target: { name: 'density', value: '0' } });
+        expect(Number(densitySlider.value)).toBe(0.1);
+
+        fireEvent.change(densitySlider, { target: { name: 'density', value: '1' } });
+        expect(Number(densitySlider.value)).toBe(0.9);
+
+        fireEvent.change(densitySlider, { target: { name: 'density', value: '0.26' } });
+        expect(Number(densitySlider.value)).toBe(0.3);
+    });
+
     it('calls onStart with correct configuration when Start Game is clicked', () => {
         const handleStart = vi.fn();
         render(<ConfigMenu onStart={handleStart} />);

@@ -19,6 +19,20 @@ const PRESETS = {
     Hard: { width: 40, height: 40, density: 0.8 },
 };
 
+const DENSITY_MIN = 0.1;
+const DENSITY_MAX = 0.9;
+const DENSITY_STEP = 0.1;
+
+const clampDensity = (value) => {
+    const numericValue = Number(value);
+    if (Number.isNaN(numericValue)) {
+        return DENSITY_MIN;
+    }
+
+    const clamped = Math.min(DENSITY_MAX, Math.max(DENSITY_MIN, numericValue));
+    return Number((Math.round(clamped / DENSITY_STEP) * DENSITY_STEP).toFixed(1));
+};
+
 const ConfigMenu = ({ onStart }) => {
     const [difficulty, setDifficulty] = useState('Normal');
     const [customConfig, setCustomConfig] = useState(PRESETS.Normal);
@@ -32,7 +46,10 @@ const ConfigMenu = ({ onStart }) => {
 
     const handleCustomChange = (e) => {
         const { name, value } = e.target;
-        setCustomConfig(prev => ({ ...prev, [name]: parseFloat(value) }));
+        const parsedValue = name === 'density'
+            ? clampDensity(value)
+            : parseFloat(value);
+        setCustomConfig(prev => ({ ...prev, [name]: parsedValue }));
     };
 
     const handleStart = () => {
@@ -78,8 +95,16 @@ const ConfigMenu = ({ onStart }) => {
                         <input type="range" name="height" min="5" max="50" value={customConfig.height} onChange={handleCustomChange} />
                     </label>
                     <label>
-                        Dead-ends density: {customConfig.density}
-                        <input type="range" name="density" min="0" max="1" step="0.1" value={customConfig.density} onChange={handleCustomChange} />
+                        Dead-ends density: {Math.round(customConfig.density * 100)}%
+                        <input
+                            type="range"
+                            name="density"
+                            min={DENSITY_MIN}
+                            max={DENSITY_MAX}
+                            step={DENSITY_STEP}
+                            value={customConfig.density}
+                            onChange={handleCustomChange}
+                        />
                     </label>
                 </div>
             )}
